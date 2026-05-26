@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SocketChat</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="login-screen">
+      <div class="login-box">
+        <div class="login-logo">
+          <span class="logo-text">Flash</span>
+          <span class="logo-icon">⚡</span>
+        </div>
+        <p class="login-sub">Haydi konusalim</p>
+        <div class="input-group">
+          <label>Kullanıcı Adı</label>
+          <input
+            id="username-input"
+            type="text"
+            maxlength="20"
+            placeholder="kullanıcı_adın"
+            autocomplete="off"
+          />
+        </div>
+        <div class="input-group">
+          <label>Oda Seç</label>
+          <div class="room-pills" id="login-rooms"></div>
+        </div>
+        <button id="join-btn">Giriş Yap →</button>
+      </div>
+      <div class="login-bg">
+        <div class="grid-lines"></div>
+      </div>
+    </div>
+
+    <!-- ══════════════════════ APP SCREEN ══════════════════════ -->
+    <div id="app" class="hidden">
+      <!-- Sidebar -->
+      <aside id="sidebar">
+        <div class="sidebar-header">
+          <span class="logo-icon small">⚡</span>
+          <span class="logo-text small">Flash</span>
+        </div>
+
+        <div class="sidebar-section">
+          <div class="sidebar-label">ODALAR</div>
+          <ul id="room-list"></ul>
+        </div>
+
+        <div class="sidebar-section">
+          <div class="sidebar-label">
+            ONLINE — <span id="online-count">0</span>
+          </div>
+          <ul id="user-list"></ul>
+        </div>
+
+        <div class="sidebar-footer">
+          <div class="my-avatar" id="my-avatar">?</div>
+          <span id="my-username-label">—</span>
+        </div>
+      </aside>
+
+      <!-- Main chat -->
+      <main id="chat-area">
+        <header id="chat-header">
+          <span id="current-room-name"># genel</span>
+          <div class="header-right">
+            <span id="conn-badge" class="badge connected">● BAĞLI</span>
+          </div>
+        </header>
+
+        <div id="messages"></div>
+
+        <div id="typing-bar"></div>
+
+        <div id="input-area">
+          <input
+            id="msg-input"
+            type="text"
+            maxlength="500"
+            placeholder="Mesaj yaz... (Enter ile gönder)"
+            autocomplete="off"
+          />
+          <button id="send-btn">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+            >
+              <line x1="22" y1="2" x2="11" y2="13" />
+              <polygon points="22 2 15 22 11 13 2 9 22 2" />
+            </svg>
+          </button>
+        </div>
+      </main>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
